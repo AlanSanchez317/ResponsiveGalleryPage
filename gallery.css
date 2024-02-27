@@ -1,0 +1,103 @@
+@keyframes gradientScroll {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+html, body {
+    min-height: 100%;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #fecd2f, #ff9a9e, #fecfef, #fecd2f, #fcb69f);
+    background-size: 400% 400%;
+    animation: gradientScroll 15s ease infinite;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 80px auto;
+}
+
+.gallery-container a {
+    display: block;
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+    background-color: #f0f0f0; 
+}
+
+.gallery-container img {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+    transition: transform 0.3s ease; 
+}
+
+.gallery-container a:hover img {
+    transform: scale(1.1); 
+}
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain; /* Ensure aspect ratio is maintained without cropping */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    margin: auto; 
+}
+
+
+.lightbox-nav {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px; 
+    color: #fff;
+    border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.lightbox-nav:hover {
+    background-color: rgba(0, 0, 0, 0.9); 
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .gallery-container img {
+        height: 150px; 
+    }
+}
